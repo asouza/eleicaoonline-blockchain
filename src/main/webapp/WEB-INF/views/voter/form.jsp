@@ -8,7 +8,7 @@
 	        <div class="row common-margin-bottom">
 	            <div class="form-group d-block col-12">
 	                <label for="number">Número</label>
-	                <form:input path="number" class="form-control" placeholder="nome do eleitor"/>
+	                <form:input path="number" class="form-control" placeholder="numero do eleitor. Ex: 100"/>
 	                <form:errors path="number"/>
 	            </div>
 	        </div>

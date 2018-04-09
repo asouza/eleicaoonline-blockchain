@@ -1,6 +1,5 @@
 package br.com.ideiasaleatorias.eleicaoonline.controllers.forms;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import br.com.ideiasaleatorias.eleicaoonline.daos.EllectionDao;
@@ -8,16 +7,16 @@ import br.com.ideiasaleatorias.eleicaoonline.models.Voter;
 
 public class NewVoterForm {
 
-	@NotBlank
-	private String number;
+	@NotNull
+	private Long number;
 	@NotNull
 	private Integer ellectionId;
 
-	public String getNumber() {
+	public Long getNumber() {
 		return number;
 	}
 
-	public void setNumber(String number) {
+	public void setNumber(Long number) {
 		this.number = number;
 	}
 
@@ -30,7 +29,7 @@ public class NewVoterForm {
 	}
 
 	public Voter toVoter(EllectionDao ellectionDao) {
-		return new Voter(number,ellectionDao.findById(ellectionId).get());
+		return new Voter(number.toString(),ellectionDao.findById(ellectionId).get());
 	}
 
 }

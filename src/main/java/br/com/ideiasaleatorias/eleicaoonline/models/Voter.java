@@ -24,7 +24,7 @@ public class Voter {
 	private Integer id;
 	
 	@NotBlank
-	@Column(unique=true)
+	@Column(unique=true)	
 	private String number;
 	
 	@ManyToOne
