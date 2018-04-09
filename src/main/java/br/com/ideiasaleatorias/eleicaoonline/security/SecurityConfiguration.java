@@ -25,7 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.antMatchers("/voters").permitAll()
 		.antMatchers("/votingbooth/**").permitAll()		
 		.anyRequest().authenticated()
-		.and().formLogin().loginPage("/login").defaultSuccessUrl("/ellections/form")		
+		.and().formLogin().loginPage("/login").defaultSuccessUrl("/ellections/form",true)		
 		.permitAll()
 		.and()
 		.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
