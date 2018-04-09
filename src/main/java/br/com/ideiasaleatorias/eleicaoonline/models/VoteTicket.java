@@ -24,6 +24,13 @@ public class VoteTicket implements VoterIdentity {
 	@NotNull
 	private LocalDateTime instantCreation;
 	
+	/**
+	 * @deprecated
+	 */
+	public VoteTicket() {
+
+	}
+	
 	
 	public VoteTicket(Supplier<VoteTicketId> voteTicketIdGenerator) {
 		this.userNumber = voteTicketIdGenerator.get().getId();
