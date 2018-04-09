@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -38,6 +39,7 @@ public class SystemUser implements UserDetails {
 	private Set<Role> roles = new HashSet<Role>();
 
 	@NotBlank
+	@Column(unique=true)
 	private String email;
 
 	@NotBlank

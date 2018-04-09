@@ -15,19 +15,19 @@ public class GenerateSecurityConfigurationController {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	@RequestMapping("/magic/generate/roles/dfhjskhgfsjdkgfjdkshgjfdjkdfkghjkfdhgjkf")
+	@RequestMapping("/magic/generate/roles")
 	@ResponseBody
 	public String generateRoles() {
 		entityManager.persist(Role.ELLECTION_OWNER);
-		return "gerado filhão";
+		return "Roles geradas. Por favor, não execute essa url novamente.";
 	}
 
-	@RequestMapping("/magic/generate/owner/dfhjskhgfsjdkgfjdkshgjfdjkdfkghjkfdhgjkf")
+	@RequestMapping("/magic/generate/owner/")
 	@ResponseBody
 	public String generateOwner() {
 		SystemUser user = new SystemUser("teste", "teste@gmail.com",
 				Password.buildWithRawText("123456"), Role.ELLECTION_OWNER);
 		entityManager.persist(user);
-		return "gerado usuario";
+		return "Usuario para realização de testes gerados. Por favor, não execute essa url novamente.";
 	}
 }
