@@ -21,7 +21,7 @@ const getAddress = (key, length = 64) => {
 const FAMILY = 'onlinevoting'
 const PREFIX = getAddress(FAMILY, 6)
 
-const getAssetAddress = payload => PREFIX + getAddress(payload.ellectionName,20) + getAddress(payload.userNumberB,20) + getAddress(payload.address,24)
+const getAssetAddress = payload => PREFIX + getAddress(payload.ellectionName,20) + getAddress(payload.userNumber,20) + getAddress(payload.address,24)
 
 const encode = obj => Buffer.from(JSON.stringify(obj, Object.keys(obj).sort()))
 const decode = buf => JSON.parse(buf.toString())
