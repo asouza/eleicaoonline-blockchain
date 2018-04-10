@@ -11,11 +11,6 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import br.com.ideiasaleatorias.eleicaoonline.infra.RepositoryAwareListener;
-import br.com.ideiasaleatorias.eleicaoonline.service.VoteTicketIdGenerator;
-
 @Entity
 public class Voter {
 
@@ -30,10 +25,6 @@ public class Voter {
 	@ManyToOne
 	@NotNull
 	private Ellection ellection;
-	
-	@Autowired
-	private transient VoteTicketIdGenerator ticketIdGenerator;
-	
 	
 	private LocalDateTime approvedInstant;
 
@@ -81,9 +72,7 @@ public class Voter {
 			throw new IllegalStateException("ticket não pode ser gerado");
 		}
 		this.generatedTicket = true;
-		
-		new RepositoryAwareListener().postLoad(this); 
-		return new VoteTicket(ticketIdGenerator); 
+		return new VoteTicket(); 
 	}
 	
 	public boolean isGeneratedTicket() {

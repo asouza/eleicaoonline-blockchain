@@ -1,7 +1,6 @@
 package br.com.ideiasaleatorias.eleicaoonline.models;
 
 import java.time.LocalDateTime;
-import java.util.function.Supplier;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import org.bitcoinj.core.ECKey;
 
 @Entity
 public class VoteTicket implements VoterIdentity {
@@ -24,17 +25,11 @@ public class VoteTicket implements VoterIdentity {
 	@NotNull
 	private LocalDateTime instantCreation;
 	
-	/**
-	 * @deprecated
-	 */
 	public VoteTicket() {
-
-	}
-	
-	
-	public VoteTicket(Supplier<VoteTicketId> voteTicketIdGenerator) {
-		this.userNumber = voteTicketIdGenerator.get().getId();
-		this.instantCreation = LocalDateTime.now();			
+		ECKey ecKey = new ECKey();
+		this.userNumber = ecKey.getPrivateKeyAsHex();
+		this.instantCreation = LocalDateTime.now();	
+		
 	}
 
 	public Vote vote(Candidate candidate) {
